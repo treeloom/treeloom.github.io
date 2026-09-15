@@ -507,11 +507,11 @@
   <div class="container">
     <span class="eyebrow">What it's been tested on</span>
     <h2>From overnight on a single host to a week on the same hardware.</h2>
-    <p class="lede">100 mid-to-large open-source GitHub repos across several popular languages — roughly 650,000 files in total. Initial naive indexing took an estimated week-plus. After tuning Milvus topology, embedding batch sizes, fleet size, and request distribution, the same workload finishes overnight. The scaling axis is embedding-worker parallelism; everything else stays boring.</p>
+    <p class="lede">100 mid-to-large open-source GitHub repos across several popular languages, roughly 650,000 files in total — of which 95 completed end-to-end. The 5 failures had two known causes, an I/O <code>ReadError</code> under high indexing concurrency and chunks exceeding the vector store's varchar ceiling; concurrency is now capped by a semaphore, and oversized chunks route to a CPU embedding backend instead of crashing the GPU one. Initial naive indexing took an estimated week-plus. After tuning Milvus topology, embedding batch sizes, fleet size, and request distribution, the same workload finishes overnight. The scaling axis is embedding-worker parallelism; everything else stays boring.</p>
 
     <div class="scale-row">
-      <div class="stat"><div class="num">100</div><div class="lbl">repositories indexed in the harness</div></div>
-      <div class="stat"><div class="num">~650K</div><div class="lbl">files parsed end-to-end</div></div>
+      <div class="stat"><div class="num">95<span style="color:var(--muted);font-weight:400">/100</span></div><div class="lbl">repositories indexed end-to-end in the harness</div></div>
+      <div class="stat"><div class="num">~650K</div><div class="lbl">files across the fleet</div></div>
       <div class="stat"><div class="num">7d → 1 night</div><div class="lbl">same workload, same hardware, tuned</div></div>
       <div class="stat"><div class="num">1</div><div class="lbl">command to bring the stack up locally</div></div>
     </div>
