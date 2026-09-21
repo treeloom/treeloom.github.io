@@ -609,11 +609,21 @@
       </svg>
       <span>Treeloom · Parse Trees · Weave Graphs</span>
     </div>
-    <div>
+    <div style="display:flex; gap:22px; align-items:center;">
       <a href="https://github.com/treeloom/treeloom">GitHub</a>
+      <span id="contact"></span>
     </div>
   </div>
 </footer>
 
+<script>
+  (function () {
+    var user = 'info', domain = 'treeloom.ai';
+    var a = document.createElement('a');
+    a.href = 'mailto:' + user + '@' + domain + '?subject=' + encodeURIComponent('Treeloom inquiry');
+    a.textContent = 'Get in touch';
+    document.getElementById('contact').appendChild(a);
+  })();
+</script>
 </body>
 </html>
